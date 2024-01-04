@@ -26,4 +26,24 @@ class GithubUsersRepositoryImpl @Inject constructor(
             emit(Resource.error(Constants.SOMETHING_WENT_WRONG, null))
         }
     }
+
+    override suspend fun getFollowers(userName: String?): Flow<Resource<List<GithubUser>>> = flow{
+        emit(Resource.loading())
+        val response = apiService.getFollowers(userName)
+        if (response.isSuccessful) {
+            emit(Resource.success(response.body()))
+        } else {
+            emit(Resource.error(Constants.SOMETHING_WENT_WRONG, null))
+        }
+    }
+
+    override suspend fun getFollowings(userName: String?): Flow<Resource<List<GithubUser>>> = flow{
+        emit(Resource.loading())
+        val response = apiService.getFollowings(userName)
+        if (response.isSuccessful) {
+            emit(Resource.success(response.body()))
+        } else {
+            emit(Resource.error(Constants.SOMETHING_WENT_WRONG, null))
+        }
+    }
 }

@@ -21,4 +21,14 @@ interface ApiService {
         @Path("username") userName: String?
     ): Response<GithubUser>
 
+    @GET("/users/{username}/followers")
+    suspend fun getFollowers(
+        @Path("username") userName: String?
+    ): Response<List<GithubUser>>
+
+    @GET("/users/{username}/following")
+    suspend fun getFollowings(
+        @Path("username") userName: String?
+    ): Response<List<GithubUser>>
+
 }

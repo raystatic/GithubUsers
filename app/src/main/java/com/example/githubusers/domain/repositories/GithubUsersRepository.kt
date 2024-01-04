@@ -12,4 +12,8 @@ interface GithubUsersRepository {
 
     suspend fun getUserByUserName(userName: String?): Flow<Resource<GithubUser>>
 
+    suspend fun getFollowers(userName: String?): Flow<Resource<List<GithubUser>>>
+
+    suspend fun getFollowings(userName: String?): Flow<Resource<List<GithubUser>>>
+
 }

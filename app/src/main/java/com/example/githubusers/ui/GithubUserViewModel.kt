@@ -25,10 +25,30 @@ class GithubUserViewModel @Inject constructor(
     var githubUserResponse = MutableLiveData<Resource<GithubUser?>>(Resource.none())
         private set
 
+    var followers = MutableLiveData<Resource<List<GithubUser>?>>(Resource.none())
+        private set
+
+    var followings = MutableLiveData<Resource<List<GithubUser>?>>(Resource.none())
+        private set
+
     fun getUserByUserName(userName: String?) = viewModelScope.launch{
         repository.getUserByUserName(userName)
             .onEach {
                 githubUserResponse.postValue(it)
+            }.launchIn(viewModelScope)
+    }
+
+    fun getFollowers(userName: String?) = viewModelScope.launch{
+        repository.getFollowers(userName)
+            .onEach {
+                followers.postValue(it)
+            }.launchIn(viewModelScope)
+    }
+
+    fun getFollowings(userName: String?) = viewModelScope.launch{
+        repository.getFollowings(userName)
+            .onEach {
+                followings.postValue(it)
             }.launchIn(viewModelScope)
     }
 

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="32dp"
     tools:context=".ui.MainActivity">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -19,7 +18,8 @@
         app:endIconTint="#000042"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="32dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text"
@@ -71,69 +71,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier"
-        android:layout_marginTop="32dp">
+        android:layout_marginTop="32dp"
+        android:visibility="gone"
+        android:layout_marginHorizontal="32dp">
 
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_image"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                app:cardCornerRadius="360dp"
-                app:cardElevation="0dp">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/image_avatar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </androidx.cardview.widget.CardView>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/card_image"
-                android:layout_alignBottom="@id/card_image"
-                android:layout_marginStart="12dp"
-                android:layout_toEndOf="@id/card_image"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rahul Ray (@raystatic)"
-                    android:textColor="#000042"
-                    android:textSize="16sp" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Android Developer"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_followers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Followers: 17    Following: 17"
-                android:layout_marginTop="12dp"
-                android:layout_below="@id/card_image"
-                android:textSize="12sp"
-                android:layout_alignStart="@id/card_image"/>
-
-
-        </RelativeLayout>
+            android:layout_height="wrap_content">
+            <include
+                android:id="@+id/layout_user_data"
+                layout="@layout/layout_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </FrameLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/loader_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:indicatorColor="#000042"
+        android:indeterminate="true"
+        app:layout_constraintTop_toBottomOf="@id/card_user" />
 
+
+
+    <!--    <View-->
+<!--        android:visibility="gone"-->
+<!--        android:id="@+id/translucnet"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:background="@color/material_dynamic_primary10"-->
+<!--        />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
