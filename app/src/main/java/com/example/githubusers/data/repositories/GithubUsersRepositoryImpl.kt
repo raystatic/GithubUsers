@@ -17,7 +17,7 @@ class GithubUsersRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ): GithubUsersRepository {
 
-    override suspend fun getUserByUserName(userName: String): Flow<Resource<GithubUser>> = flow {
+    override suspend fun getUserByUserName(userName: String?): Flow<Resource<GithubUser>> = flow {
         emit(Resource.loading())
         val response = apiService.getUserByUserName(userName)
         if (response.isSuccessful) {

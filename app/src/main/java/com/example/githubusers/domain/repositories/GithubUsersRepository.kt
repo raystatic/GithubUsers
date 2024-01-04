@@ -10,6 +10,6 @@ import kotlinx.coroutines.flow.Flow
  */
 interface GithubUsersRepository {
 
-    suspend fun getUserByUserName(userName: String): Flow<Resource<GithubUser>>
+    suspend fun getUserByUserName(userName: String?): Flow<Resource<GithubUser>>
 
 }

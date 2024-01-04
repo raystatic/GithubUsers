@@ -25,7 +25,7 @@ class GithubUserViewModel @Inject constructor(
     var githubUserResponse = MutableLiveData<Resource<GithubUser?>>(Resource.none())
         private set
 
-    fun getUserByUserName(userName: String) = viewModelScope.launch{
+    fun getUserByUserName(userName: String?) = viewModelScope.launch{
         repository.getUserByUserName(userName)
             .onEach {
                 githubUserResponse.postValue(it)

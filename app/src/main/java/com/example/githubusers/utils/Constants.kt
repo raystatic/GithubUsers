@@ -6,4 +6,6 @@ package com.example.githubusers.utils
  */
 object Constants {
     const val SOMETHING_WENT_WRONG  = "Something went wrong"
+    const val FINDING_USER = "Finding User..."
+    const val USER_NOT_FOUND = "Username not found."
 }

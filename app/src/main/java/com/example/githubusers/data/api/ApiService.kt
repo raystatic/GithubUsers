@@ -18,7 +18,7 @@ interface ApiService {
 
     @GET("/users/{username}")
     suspend fun getUserByUserName(
-        @Path("username") userName: String
+        @Path("username") userName: String?
     ): Response<GithubUser>
 
 }
